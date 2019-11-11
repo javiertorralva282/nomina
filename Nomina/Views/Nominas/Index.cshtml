@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Nomina.Models.Nomina>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.SueldoQuincenal)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.NombreEmpleado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.SueldoQuincenal)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.Empleado.NombreEmpleado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NominaID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NominaID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NominaID })
+        </td>
+    </tr>
+}
+
+</table>

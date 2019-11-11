@@ -1,0 +1,58 @@
+﻿@model Nomina.Models.Nomina
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nomina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasTrabajados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasTrabajados)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SueldoPorDia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SueldoPorDia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SueldoQuincenal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SueldoQuincenal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empleado.NombreEmpleado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empleado.NombreEmpleado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NominaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

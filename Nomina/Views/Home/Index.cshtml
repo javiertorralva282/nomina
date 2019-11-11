@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Nomina.Models.Nomina>
+@{
+    ViewBag.Title = "Administracion de Empleados y Administraion de la Nomina ";
+}
+
+@using (@Html.BeginForm("Index", "Home", FormMethod.Get))
+{
+    <b>Busqueda</b>
+    @Html.TextBox("search") <input type="submit" value="Search" />
+
+}
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Empleado.NombreEmpleado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empleado.NombreEmpleado)
+            </td>
+            <td>
+
+                @*@Html.ActionLink("Details", "Details", "Nominas", new { id = item.NominaID })*@
+                @Html.ActionLink(
+    linkText: "Details",
+    actionName: "Details",
+    controllerName: "Nominas",
+    routeValues: new
+         {
+        id = item.NominaID
+    },
+    htmlAttributes: null
+)
+
+            </td>
+        </tr>
+    }
+
+</table>
