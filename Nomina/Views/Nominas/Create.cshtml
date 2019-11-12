@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiasTrabajados, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DiasTrabajados, new { htmlAttributes = new { @class = "form-control", id="DiasTrabajados", onkeyup="mul()" } })
+                @Html.EditorFor(model => model.DiasTrabajados, new { htmlAttributes = new { @class = "form-control", id = "DiasTrabajados", onkeyup = "mul()" } })
                 @Html.ValidationMessageFor(model => model.DiasTrabajados, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SueldoPorDia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SueldoPorDia, new { htmlAttributes = new { @class = "form-control",id="SueldoporDia" ,onkeyup="mul()" } })
+                @Html.EditorFor(model => model.SueldoPorDia, new { htmlAttributes = new { @class = "form-control", id = "SueldoporDia", onkeyup = "mul()" } })
                 @Html.ValidationMessageFor(model => model.SueldoPorDia, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,12 +42,12 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SueldoQuincenal, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SueldoQuincenal, new { htmlAttributes = new { @class = "form-control" ,id="SueldoQuincenal" } })
+                @Html.EditorFor(model => model.SueldoQuincenal, new { htmlAttributes = new { @class = "form-control", id = "SueldoQuincenal" } })
                 @Html.ValidationMessageFor(model => model.SueldoQuincenal, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">    
+        <div class="form-group">
             @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
@@ -69,15 +69,30 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
 
     <script>
+
         function mul() {
-           var SueldoporDia = document.getElementById('SueldoporDia').value;
-            
-             var dia = document.getElementById('DiasTrabajados').value;
-             var mult = SueldoporDia * dia;
+            var SueldoporDia = document.getElementById('SueldoporDia').value;
+
+            var dia = document.getElementById('DiasTrabajados').value;
+            var mult = SueldoporDia * dia;
             document.getElementById('SueldoQuincenal').value = mult;
 
         }
     </script>
+    <script type="text/javascript">
+                $(document).ready(function () {
+            Date.prototype.yyyymmdd = function () {
+                var yyyy = this.getFullYear().toString();
+                var mm = (this.getMonth() + 1).toString(); // getMonth() is zero-based
+                var dd = this.getDate().toString();
+                return yyyy + "/" + (mm[1] ? mm : "0" + mm[0]) + "/" + (dd[1] ? dd : "0" + dd[0]); // padding
+            };
+            var date = new Date();
+            $("#fecha").val(date.yyyymmdd());
+        });
+    </script>
+
 }

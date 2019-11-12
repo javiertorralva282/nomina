@@ -120,6 +120,14 @@ namespace Nomina.Models
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult BuscarPorFecha(string Fecha)
+        {
+            ViewBag.Fecha = new SelectList(db.Nominas, "Fecha", "Fecha");
+            DateTime fecha = Convert.ToDateTime(Fecha);
+            return View(db.Nominas.Where(x => x.Fecha == fecha || Fecha == null).ToList());
+        }
+
+
 
         protected override void Dispose(bool disposing)
         {
@@ -128,6 +136,9 @@ namespace Nomina.Models
                 db.Dispose();
             }
             base.Dispose(disposing);
+
+
+
         }
     }
 }
